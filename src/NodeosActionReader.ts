@@ -23,10 +23,12 @@ export class NodeosActionReader extends AbstractActionReader {
     public startAtBlock: number = 1,
     protected onlyIrreversible: boolean = false,
     protected maxHistoryLength: number = 600,
+    protected requestInstance: any = request,
+    protected numberOfConfirmations = 0,
   ) {
     super(startAtBlock, onlyIrreversible, maxHistoryLength)
     this.nodeosEndpoint = nodeosEndpoint.replace(/\/+$/g, "") // Removes trailing slashes
-
+    this.numberOfConfirmations = numberOfConfirmations
     this.log = Logger.createLogger({ name: "demux" })
   }
 
@@ -41,7 +43,7 @@ export class NodeosActionReader extends AbstractActionReader {
           url: `${this.nodeosEndpoint}/v1/chain/get_info`,
           json: true,
         })
-        return blockInfo.head_block_num
+        return blockInfo.head_block_num - this.numberOfConfirmations
       } catch (err) {
         if (numTries - 1 === numRetries) {
           throw err
