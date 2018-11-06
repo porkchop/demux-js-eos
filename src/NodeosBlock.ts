@@ -28,6 +28,8 @@ export class NodeosBlock implements Block {
           type: `${action.account}::${action.name}`,
           payload: {
             transactionId: transaction.trx.id,
+            cpu_usage_us: transaction.cpu_usage_us,
+            net_usage_words: transaction.net_usage_words,
             actionIndex,
             ...action,
           },
