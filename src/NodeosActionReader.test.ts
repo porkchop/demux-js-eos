@@ -46,6 +46,7 @@ describe("NodeosActionReader", () => {
           payload: {
             account: "testing",
             actionIndex: 0,
+            status: "executed",
             cpu_usage_us: 778,
             net_usage_words: 14,
             authorization: [
@@ -66,6 +67,7 @@ describe("NodeosActionReader", () => {
           payload: {
             account: "testing",
             actionIndex: 1,
+            status: "executed",
             cpu_usage_us: 778,
             net_usage_words: 14,
             authorization: [
