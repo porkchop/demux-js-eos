@@ -2,6 +2,7 @@ import { Action, ActionReaderOptions } from 'demux'
 
 export interface NodeosActionReaderOptions extends ActionReaderOptions {
   nodeosEndpoint?: string
+  numberOfConfirmations?: number
 }
 
 export interface MongoActionReaderOptions extends ActionReaderOptions {

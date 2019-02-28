@@ -15,6 +15,10 @@ describe('NodeosBlock', () => {
         payload: {
           account: 'testing',
           actionIndex: 0,
+          status: 'executed',
+          cpu_usage_us: 778,
+          net_usage_words: 14,
+          expiration: '2018-06-16T06:31:33',
           authorization: [
             {
               actor: 'testing',
@@ -33,6 +37,10 @@ describe('NodeosBlock', () => {
         payload: {
           account: 'testing',
           actionIndex: 1,
+          status: 'executed',
+          cpu_usage_us: 778,
+          net_usage_words: 14,
+          expiration: '2018-06-16T06:31:33',
           authorization: [
             {
               actor: 'testing',

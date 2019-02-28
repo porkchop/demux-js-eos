@@ -17,6 +17,7 @@ export class NodeosActionReader extends AbstractActionReader {
     super(options)
     const nodeosEndpoint = options.nodeosEndpoint ? options.nodeosEndpoint : 'http://localhost:8888'
     this.nodeosEndpoint = nodeosEndpoint.replace(/\/+$/g, '') // Removes trailing slashes
+    this.numberOfConfirmations = options.numberOfConfirmations ? options.numberOfConfirmations : 0
   }
 
   /**
@@ -29,7 +30,7 @@ export class NodeosActionReader extends AbstractActionReader {
           url: `${this.nodeosEndpoint}/v1/chain/get_info`,
           json: true,
         })
-        return blockInfo.head_block_num
+        return blockInfo.head_block_num - this.numberOfConfirmations
       }, numRetries, waitTimeMs)
       return blockNum
     } catch (err) {
